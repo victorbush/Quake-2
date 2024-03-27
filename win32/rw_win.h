@@ -21,7 +21,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #define __RW_WIN_H__
 
 #include <windows.h>
-#include <ddraw.h>
+#include "ddraw.h"
 
 typedef struct
 {

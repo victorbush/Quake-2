@@ -603,6 +603,7 @@ void Mod_LoadFaces (lump_t *l)
 			out->samples = NULL;
 		else
 			out->samples = loadmodel->lightdata + i;
+
 		
 	// set the drawing flags
 		

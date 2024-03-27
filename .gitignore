@@ -1,0 +1,16 @@
+*.suo
+*.vcxproj.user
+ctf/debug/
+ctf/release/
+debug/
+*.VC.db
+*.VC.opendb
+debugaxp/
+*.sdf
+game/release/
+quake2_debug/
+ref_gl/release/
+ref_soft/release/
+release/
+quake2.ncb
+.vs/

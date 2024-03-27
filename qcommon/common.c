@@ -131,7 +131,10 @@ void Com_Printf (char *fmt, ...)
 		if (!logfile)
 		{
 			Com_sprintf (name, sizeof(name), "%s/qconsole.log", FS_Gamedir ());
-			logfile = fopen (name, "w");
+			if (logfile_active->value > 2)
+				logfile = fopen (name, "a");
+			else
+				logfile = fopen (name, "w");
 		}
 		if (logfile)
 			fprintf (logfile, "%s", msg);
@@ -1561,7 +1564,7 @@ void Qcommon_Frame (int msec)
 	if (host_speeds->value)
 		time_after = Sys_Milliseconds ();		
 
-
+	
 	if (host_speeds->value)
 	{
 		int			all, sv, gm, cl, rf;

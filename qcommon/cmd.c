@@ -215,7 +215,6 @@ void Cbuf_Execute (void)
 			if (text[i] == '\n')
 				break;
 		}
-			
 				
 		memcpy (line, text, i);
 		line[i] = 0;

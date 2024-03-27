@@ -506,6 +506,7 @@ void SV_SendClientMessages (void)
 		{
 			// get the next message
 			r = fread (&msglen, 4, 1, sv.demofile);
+
 			if (r != 1)
 			{
 				SV_DemoCompleted ();

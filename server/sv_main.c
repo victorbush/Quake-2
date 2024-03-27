@@ -829,11 +829,12 @@ void Master_Heartbeat (void)
 	char		*string;
 	int			i;
 
-	
-	if (!dedicated->value)
+	// pgm post3.19 change, cvar pointer not validated before dereferencing
+	if (!dedicated || !dedicated->value)
 		return;		// only dedicated servers send heartbeats
 
-	if (!public_server->value)
+	// pgm post3.19 change, cvar pointer not validated before dereferencing
+	if (!public_server || !public_server->value)
 		return;		// a private dedicated game
 
 	// check for time wraparound
@@ -868,10 +869,12 @@ void Master_Shutdown (void)
 {
 	int			i;
 
-	if (!dedicated->value)
+	// pgm post3.19 change, cvar pointer not validated before dereferencing
+	if (!dedicated || !dedicated->value)
 		return;		// only dedicated servers send heartbeats
 
-	if (!public_server->value)
+	// pgm post3.19 change, cvar pointer not validated before dereferencing
+	if (!public_server || !public_server->value)
 		return;		// a private dedicated game
 
 	// send to group master
@@ -905,6 +908,7 @@ void SV_UserinfoChanged (client_t *cl)
 	
 	// name for C code
 	strncpy (cl->name, Info_ValueForKey (cl->userinfo, "name"), sizeof(cl->name)-1);
+
 	// mask off high bit
 	for (i=0 ; i<sizeof(cl->name) ; i++)
 		cl->name[i] &= 127;
@@ -963,7 +967,7 @@ void SV_Init (void)
 	sv_paused = Cvar_Get ("paused", "0", 0);
 	sv_timedemo = Cvar_Get ("timedemo", "0", 0);
 	sv_enforcetime = Cvar_Get ("sv_enforcetime", "0", 0);
-	allow_download = Cvar_Get ("allow_download", "0", CVAR_ARCHIVE);
+	allow_download = Cvar_Get ("allow_download", "1", CVAR_ARCHIVE);
 	allow_download_players  = Cvar_Get ("allow_download_players", "0", CVAR_ARCHIVE);
 	allow_download_models = Cvar_Get ("allow_download_models", "1", CVAR_ARCHIVE);
 	allow_download_sounds = Cvar_Get ("allow_download_sounds", "1", CVAR_ARCHIVE);

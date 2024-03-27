@@ -120,7 +120,7 @@ void VID_Printf (int print_level, char *fmt, ...)
 	static qboolean	inupdate;
 	
 	va_start (argptr,fmt);
-	vsprintf (msg,fmt,argptr);
+	vsprintf_s(msg, sizeof(msg), fmt, argptr);
 	va_end (argptr);
 
 	if (print_level == PRINT_ALL)
@@ -492,7 +492,8 @@ vidmode_t vid_modes[] =
 	{ "Mode 6: 1024x768",  1024, 768,  6 },
 	{ "Mode 7: 1152x864",  1152, 864,  7 },
 	{ "Mode 8: 1280x960",  1280, 960, 8 },
-	{ "Mode 9: 1600x1200", 1600, 1200, 9 }
+	{ "Mode 9: 1600x1200", 1600, 1200, 9 },
+	{ "Mode 10: 2048x1536", 2048, 1536, 10 }
 };
 
 qboolean VID_GetModeInfo( int *width, int *height, int mode )
@@ -593,7 +594,7 @@ qboolean VID_LoadRefresh( char *name )
 
 	if ( ( GetRefAPI = (void *) GetProcAddress( reflib_library, "GetRefAPI" ) ) == 0 )
 		Com_Error( ERR_FATAL, "GetProcAddress failed on %s", name );
-
+	
 	re = GetRefAPI( ri );
 
 	if (re.api_version != API_VERSION)

@@ -383,6 +383,7 @@ void CMod_LoadLeafBrushes (lump_t *l)
 	int			count;
 	
 	in = (void *)(cmod_base + l->fileofs);
+
 	if (l->filelen % sizeof(*in))
 		Com_Error (ERR_DROP, "MOD_LoadBmodel: funny lump size");
 	count = l->filelen / sizeof(*in);
