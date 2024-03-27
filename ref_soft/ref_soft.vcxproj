@@ -120,11 +120,15 @@
       <SubSystem>Windows</SubSystem>
       <ImportLibrary>.\..\debug/ref_soft.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <OutputFile>.\..\debug/ref_soft.bsc</OutputFile>
     </Bscmake>
+    <PostBuildEvent>
+      <Command>copy "$(TargetDir)ref_soft.dll" "$(SolutionDir)quake2_debug\ref_soft.dll"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Midl>

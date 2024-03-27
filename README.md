@@ -1,0 +1,4 @@
+- Check out code.
+- Open solution.
+- Set the `quake2` project as the startup project.
+- Build and debug the project. Use the debug solution configuration.
